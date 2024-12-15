@@ -1,0 +1,21 @@
+const Web3 = require('web3');
+
+// Initialize Web3 (Assuming you are using an Infura provider or local node)
+const web3 = new Web3('https://mainnet.infura.io/v3/YOUR_INFURA_PROJECT_ID');
+
+// Function to get contract bytecode
+async function getContractBytecode(contractAddress) {
+  try {
+    const bytecode = await web3.eth.getCode(contractAddress);
+    return bytecode;
+  } catch (error) {
+    console.error('Error fetching bytecode:', error);
+    return null;
+  }
+}
+
+// Example usage
+const contractAddress = '0x...'; // Replace with the actual contract address
+getContractBytecode(contractAddress).then(bytecode => {
+  console.log('Contract Bytecode:', bytecode);
+});
